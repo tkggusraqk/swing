@@ -143,16 +143,16 @@ public class MigLayoutDemo extends JFrame {
 
 			// 子对象的起点坐标 和终点坐标
 			Test test = (Test) desktopPane.getComponent(i);
-			Rectangle startItemRectangle = test.getBounds();
-			startItemRectangle.y = Math.abs(Math.abs(desktopPane.getY()) - startItemRectangle.y);
+			Rectangle itemStartRectangle = test.getBounds();
+			itemStartRectangle.y = Math.abs(Math.abs(desktopPane.getY()) - itemStartRectangle.y);
 
-			System.out.println("子项坐标：" + test.getTitle() + "," + JSON.toJSONString(startItemRectangle));
+			System.out.println("子项坐标：" + test.getTitle() + "," + JSON.toJSONString(itemStartRectangle));
 			System.out.println("desktopPane:x:" + desktopPane.getX() + ",y:" + Math.abs(desktopPane.getY()) + ",h:"
 					+ desktopPane.getHeight());
 
 			// 起点坐标在可视范围内
-			boolean isStartPoint = rectangle.width > (startItemRectangle.x + 150)
-					&& rectangle.height > (startItemRectangle.y + 160);
+			boolean isStartPoint = rectangle.width > (itemStartRectangle.x + 150)
+					&& rectangle.height > (itemStartRectangle.y + 160);
 			boolean isEndPoint = Math.abs((test.getBounds().y + 480) - 160) >= Math.abs(desktopPane.getY());
 			if (isStartPoint && isEndPoint) {
 				System.out.println("对象:" + test.getTitle() + "在可视范围内");
